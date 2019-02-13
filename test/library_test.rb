@@ -30,4 +30,15 @@ class LibraryTest < Minitest::Test
   def test_library_can_have_books_added
     assert_equal [@fifth_season, @mockingbird, @kingdoms], @dpl.books
   end
+
+
+  def test_library_can_check_books_it_has
+    assert_equal true, @dpl.include?("To Kill a Mockingbird")
+    assert_equal false, @dpl.include("Grapes of Wrath")
+  end
+
+
+  def test_library_has_catalog_by_authors_last_name
+    assert_equal [@fifth_season,@kingdoms,@mockingbird], @dpl.card_catalog
+  end
 end

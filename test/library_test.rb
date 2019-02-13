@@ -50,6 +50,18 @@ class LibraryTest < Minitest::Test
   end
 
 
+  def test_library_starts_with_no_authors
+    lib = Library.new
+    assert_equal ({}), lib.authors
+  end
+
+
+  def test_library_has_has_of_authors
+    assert_equal ({"N.K. Jemisin" => [@fifth_season, @kingdoms],
+        "Harper Lee" => [@mockingbird]}), @dpl.authors
+  end
+
+
   def test_library_can_find_by_author
     assert_equal ({ "The Fifth Season" => @fifth_season,
           "The Hundred Thousand Kingdoms"  => @kingdoms}), @dpl.find_by_author("N.K. Jemisin")
@@ -57,6 +69,7 @@ class LibraryTest < Minitest::Test
 
 
   def test_library_can_find_by_publication_date
+    skip
     assert_equal ({"To Kill a Mockingbird" => @mockingbird}), @dpl.find_by_publication_date("1960")
   end
 end

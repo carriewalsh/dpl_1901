@@ -31,7 +31,9 @@ class AuthorTest < Minitest::Test
 
 
   def test_author_can_have_books_added
-    assert_equal 2, @nk_jemisin.books.count
+    @nk_jemisin.add_book("The Broken Kingdoms","November 3, 2010")
+    assert_equal 3, @nk_jemisin.books.count
     assert_equal "The Fifth Season", @nk_jemisin.books.first.title
+    assert_equal "The Broken Kingdoms", @nk_jemisin.books.last.title
   end
 end

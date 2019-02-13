@@ -28,6 +28,6 @@ class LibraryTest < Minitest::Test
 
 
   def test_library_can_have_books_added
-    assert_equal [@fifth_season,@mockingbird,@kingdoms], @dpl.books
+    assert_equal [@fifth_season, @mockingbird, @kingdoms], @dpl.books
   end
 end

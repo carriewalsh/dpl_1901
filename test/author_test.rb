@@ -31,6 +31,7 @@ class AuthorTest < Minitest::Test
 
 
   def test_author_can_have_books_added
-    assert_equal [@fifth_season, @hundred_thousand_kingdoms], @nk_jemisin.books
+    assert_equal 2, @nk_jemisin.books.count
+    assert_equal "The Fifth Season", @nk_jemisin.books.first.title
   end
 end

@@ -42,9 +42,34 @@ class LibraryTest < Minitest::Test
     assert_equal [@fifth_season,@kingdoms,@mockingbird], @dpl.card_catalog
   end
 
+
   def test_library_card_catalog_ignores_first_word_the
     @great = @nk_jemisin.add_book("Great Book", "2010")
     @dpl.add_to_collection(@great)
     assert_equal [@fifth_season, @great, @kingdoms, @mockingbird], @dpl.card_catalog
+  end
+
+
+  def test_library_starts_with_no_authors
+    lib = Library.new
+    assert_equal ({}), lib.authors
+  end
+
+
+  def test_library_has_has_of_authors
+    assert_equal ({"N.K. Jemisin" => [@fifth_season, @kingdoms],
+        "Harper Lee" => [@mockingbird]}), @dpl.authors
+  end
+
+
+  def test_library_can_find_by_author
+    assert_equal ({ "The Fifth Season" => @fifth_season,
+          "The Hundred Thousand Kingdoms"  => @kingdoms}), @dpl.find_by_author("N.K. Jemisin")
+  end
+
+
+  def test_library_can_find_by_publication_date
+    skip
+    assert_equal ({"To Kill a Mockingbird" => @mockingbird}), @dpl.find_by_publication_date("1960")
   end
 end

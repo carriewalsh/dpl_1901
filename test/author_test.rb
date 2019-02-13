@@ -4,8 +4,8 @@ require "./lib/author"
 class AuthorTest < Minitest::Test
   def setup
     @nk_jemisin = Author.new({first_name: "N.K.", last_name: "Jemisin"})
-    @nk_jemisin.add_book("The Fifth Season", "November 3, 2015")
-    @nk_jemisin.add_book("The Hundred Thousand Kingdoms", "2010")
+    @fifth_season = @nk_jemisin.add_book("The Fifth Season", "November 3, 2015")
+    @kingdoms = @nk_jemisin.add_book("The Hundred Thousand Kingdoms", "2010")
   end
 
 
@@ -31,9 +31,6 @@ class AuthorTest < Minitest::Test
 
 
   def test_author_can_have_books_added
-    @nk_jemisin.add_book("The Broken Kingdoms","November 3, 2010")
-    assert_equal 3, @nk_jemisin.books.count
-    assert_equal "The Fifth Season", @nk_jemisin.books.first.title
-    assert_equal "The Broken Kingdoms", @nk_jemisin.books.last.title
+    assert_equal [@fifth_season, @kingdoms], @nk_jemisin.books
   end
 end

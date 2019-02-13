@@ -34,7 +34,7 @@ class LibraryTest < Minitest::Test
 
   def test_library_can_check_books_it_has
     assert_equal true, @dpl.include?("To Kill a Mockingbird")
-    assert_equal false, @dpl.include("Grapes of Wrath")
+    assert_equal false, @dpl.include?("Grapes of Wrath")
   end
 
 
